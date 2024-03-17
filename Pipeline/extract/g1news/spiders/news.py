@@ -1,6 +1,42 @@
 import scrapy
 from scrapy_splash import SplashRequest
 
+"""
+Spider de Notícias do G1
+
+Este é um spider escrito em Python usando o framework Scrapy para coletar notícias do site G1. 
+O spider acessa as páginas das notícias listadas na variável `start_urls`, 
+extrai informações relevantes de cada página e as armazena em um formato estruturado.
+
+Funcionamento:
+
+- URLs Iniciais: As URLs iniciais são definidas na lista `start_urls`. 
+Cada URL corresponde a uma notícia específica no site G1.
+
+- Splash: Para lidar com o conteúdo dinâmico da página, este spider utiliza o Splash, 
+um renderizador de JavaScript baseado em navegador. 
+O SplashRequest é usado para carregar as páginas das notícias, 
+permitindo que o JavaScript seja executado para carregar todo o conteúdo dinâmico.
+
+- Extração de Dados: Após o carregamento das páginas, o método `parse` é chamado para 
+extrair os dados das notícias. Os dados extraídos incluem o título, URL, subtítulo, autor, 
+data de publicação e categoria da notícia.
+
+- Saída: As informações extraídas de cada notícia são armazenadas em um formato 
+estruturado e são retornadas como saída do spider.
+
+Requisitos:
+- Scrapy
+- Scrapy-Splash
+- Servidor Splash em execução
+
+Uso:
+Para executar este spider, use o comando:
+scrapy crawl g1news -o noticias.csv
+Isso iniciará o spider e salvará os dados coletados em um arquivo CSV chamado `noticias.csv`.
+
+"""
+
 class NewsSpider(scrapy.Spider):
     name = "g1news"
     start_urls = ["https://g1.globo.com/politica/noticia/2024/03/16/principais-pontos-quatro-depoimentos-bolsonaro-tentativa-golpe.ghtml",
