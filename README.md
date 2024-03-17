@@ -4,9 +4,9 @@ Este projeto consiste em um web scraping desenvolvido em Python usando o framewo
 
 ## Funcionalidades
 
-- O web scraper busca notícias do site do G1 em várias seções, como Tecnologia, Política, Economia, entre outras.
+- O web scraper busca notícias do site do G1 em várias seções, como Tecnologia, Política, Economia, entre outras. (código que executa essa parte está em Pipeline/extract/g1news/spiders/news.py)
 - As informações coletadas incluem título, data de publicação, autor, conteúdo e categoria da notícia.
-- Os dados extraídos são armazenados em um arquivo JSON.
+- Os dados extraídos são armazenados em um arquivo JSON.(arquivo dentro da pasta Pipeline/extract)
 - Um script carrega o arquivo JSON para uma tabela no BigQuery para análise posterior.
 
 ## Requisitos
