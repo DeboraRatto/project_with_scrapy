@@ -50,11 +50,12 @@ class NewsSpider(scrapy.Spider):
                   "https://g1.globo.com/mundo/noticia/2024/03/14/mais-de-4-mil-ogivas-armazenadas-e-maleta-que-fica-com-putin-russia-tem-arsenal-nuclear-capaz-de-destruir-o-mundo-varias-vezes.ghtml",
                   "https://g1.globo.com/economia/imposto-de-renda/noticia/2024/03/06/imposto-de-renda-2024-receita-divulga-as-regras-veja-quem-e-obrigado-a-declarar.ghtml"]
 
+    #Atrasa o scrapy 5 seg.
     def start_requests(self):
         for url in self.start_urls:
             yield SplashRequest(url, self.parse,
                 args={
-                    'wait': 10,
+                    'wait': 5,
                 })  
     
     def parse(self, response):
