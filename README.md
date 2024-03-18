@@ -19,6 +19,7 @@ Antes de executar o projeto, você precisará instalar os seguintes itens:
 - google-cloud-bigquery = 3.19.0
 - pandas = 2.2.1
 - pandas-gbq = 0.22.0
+- flask = 3.0.2
 
 Além disso, é necessário configurar o ambiente para autenticar com o Google Cloud Platform e configurar um projeto no BigQuery.
 
@@ -35,4 +36,59 @@ Para usar a API, siga estas etapas:
 
 Observação: Certifique-se de que o serviço do BigQuery esteja configurado corretamente e que a tabela de destino contenha os dados necessários para consulta.
 
+## Instalação e Configuração
+1. Clone o repositório:
+´´´bash
+git clone https://github.com/DeboraRatto/project_with_scrapy.git
+cd dataEngineerTest
+´´´
+
+2. Configure a versão correta do python com pyenv:
+´´´bash
+pyenv install 3.12.1
+pyenv local 3.12.1
+´´´
+
+3. Configure o poetry para versão do python acima e ative o ambiente virtual:
+´´´bash
+poetry env use 3.12.1
+poetry shell
+´´´
+
+4. Instale as dependencias do projeto:
+´´´bash
+poetry install
+´´´
+
+5. Entre na pasta Pipeline/extract/g1news e execute:
+´´´bash
+scrapy crawl g1news -o g1news.json
+´´´
+
+6. Volte para pasta dataEngineerTest
+
+7. Crie um projeto no Google BigQuery e uma tabela para armazenar as informações do arquivo json criado. 
+
+8. Faça o download das credenciais do projeto criado no Google BigQuery, crie uma nova pasta dentro de dataEngineerTest e coloque esse arquivo das credenciais dentro dessa nova pasta criada: (arquivo de credenciais precisa ser json)
+´´´bash
+mkdir Credentials
+´´´
+
+9. Dentro do arquivo load.py, altere as informações de project_id, data_set_id e table_name de acordo com os nomes criados no seu projeto do BQ.
+
+10. Se precisar, altere o nome do arquivo de credentials do BQ para o nome que você colocou no seu arquivo.
+
+11. Execute o arquivo load.py
+
+12. Verifique as informações na sua tabela do BQ. 
+
+#### Configuração API:
+13. Dentro do diretório API tem o arquivo create_api.py. Substitua o nome do arquivo de credenciais para autenticação correta e substitua a query para uma query que faça referencia a sua tabela do BQ. 
+
+14. Execute o arquivo create_api.py, isso ativará o flask.
+
+15. Faça uma consulta teste da API com a ferramenta que quiser, sugiro utilizar o postman, exemplo de endpoint:
+´´´bash
+http://localhost:5000/search?keyword=Tecnologia
+´´´
 
