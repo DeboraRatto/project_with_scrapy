@@ -38,41 +38,47 @@ Observação: Certifique-se de que o serviço do BigQuery esteja configurado cor
 
 ## Instalação e Configuração
 1. Clone o repositório:
-´´´bash
+
+~~~bash
 git clone https://github.com/DeboraRatto/project_with_scrapy.git
 cd dataEngineerTest
-´´´
+~~~
 
 2. Configure a versão correta do python com pyenv:
-´´´bash
+
+~~~bash
 pyenv install 3.12.1
 pyenv local 3.12.1
-´´´
+~~~
 
 3. Configure o poetry para versão do python acima e ative o ambiente virtual:
-´´´bash
+
+~~~bash
 poetry env use 3.12.1
 poetry shell
-´´´
+~~~
 
 4. Instale as dependencias do projeto:
-´´´bash
+
+~~~bash
 poetry install
-´´´
+~~~
 
 5. Entre na pasta Pipeline/extract/g1news e execute:
-´´´bash
+
+~~~bash
 scrapy crawl g1news -o g1news.json
-´´´
+~~~
 
 6. Volte para pasta dataEngineerTest
 
 7. Crie um projeto no Google BigQuery e uma tabela para armazenar as informações do arquivo json criado. 
 
 8. Faça o download das credenciais do projeto criado no Google BigQuery, crie uma nova pasta dentro de dataEngineerTest e coloque esse arquivo das credenciais dentro dessa nova pasta criada: (arquivo de credenciais precisa ser json)
-´´´bash
+
+~~~bash
 mkdir Credentials
-´´´
+~~~
 
 9. Dentro do arquivo load.py, altere as informações de project_id, data_set_id e table_name de acordo com os nomes criados no seu projeto do BQ.
 
@@ -88,7 +94,8 @@ mkdir Credentials
 14. Execute o arquivo create_api.py, isso ativará o flask.
 
 15. Faça uma consulta teste da API com a ferramenta que quiser, sugiro utilizar o postman, exemplo de endpoint:
-´´´bash
+
+~~~bash
 http://localhost:5000/search?keyword=Tecnologia
-´´´
+~~~
 
