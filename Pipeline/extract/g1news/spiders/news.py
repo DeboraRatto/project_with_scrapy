@@ -32,8 +32,8 @@ Requisitos:
 
 Uso:
 Para executar este spider, use o comando:
-scrapy crawl g1news -o noticias.csv
-Isso iniciará o spider e salvará os dados coletados em um arquivo CSV chamado `noticias.csv`.
+scrapy crawl g1news -o g1news.json
+Isso iniciará o spider e salvará os dados coletados em um arquivo json chamado `g1news.json`.
 
 """
 
