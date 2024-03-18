@@ -41,7 +41,7 @@ Observação: Certifique-se de que o serviço do BigQuery esteja configurado cor
 
 ~~~bash
 git clone https://github.com/DeboraRatto/project_with_scrapy.git
-cd dataEngineerTest
+cd project_with_scrapy
 ~~~
 
 2. Configure a versão correta do python com pyenv:
@@ -64,36 +64,30 @@ poetry shell
 poetry install
 ~~~
 
-5. Entre na pasta Pipeline/extract e execute:
+5. Abra a pasta project_with_scrapy que acabou de copiar na sua IDE de preferencia e sega os próximos passos. 
 
-~~~bash
-scrapy crawl g1news -o g1news.json
-~~~
+6. Crie um projeto no Google BigQuery e uma tabela para armazenar as informações do arquivo json criado. 
 
-6. Volte para pasta dataEngineerTest
-
-7. Crie um projeto no Google BigQuery e uma tabela para armazenar as informações do arquivo json criado. 
-
-8. Faça o download das credenciais do projeto criado no Google BigQuery, crie uma nova pasta dentro de dataEngineerTest e coloque esse arquivo das credenciais dentro dessa nova pasta criada: (arquivo de credenciais precisa ser json)
+7. Faça o download das credenciais do projeto criado no Google BigQuery, crie uma nova pasta dentro de project_with_scrapy e coloque esse arquivo das credenciais dentro dessa nova pasta criada: (arquivo de credenciais precisa ser json)
 
 ~~~bash
 mkdir Credentials
 ~~~
 
-9. Dentro do arquivo load.py, altere as informações de project_id, data_set_id e table_name de acordo com os nomes criados no seu projeto do BQ.
+8. Dentro do arquivo load.py, altere as informações de project_id, data_set_id e table_name de acordo com os nomes criados no seu projeto do BQ.
 
-10. Se precisar, altere o nome do arquivo de credentials do BQ para o nome que você colocou no seu arquivo.
+9. Se precisar, altere o nome do arquivo de credentials do BQ para o nome que você colocou no seu arquivo.
 
-11. Execute o arquivo load.py
+10. Execute o arquivo load.py
 
-12. Verifique as informações na sua tabela do BQ. 
+11. Verifique as informações na sua tabela do BQ. 
 
 #### Configuração API:
-13. Dentro do diretório API tem o arquivo create_api.py. Substitua o nome do arquivo de credenciais para autenticação correta e substitua a query para uma query que faça referencia a sua tabela do BQ. 
+12. Dentro do diretório API tem o arquivo create_api.py. Substitua o nome do arquivo de credenciais para autenticação correta e substitua a query para uma query que faça referencia a sua tabela do BQ. 
 
-14. Execute o arquivo create_api.py, isso ativará o flask.
+13. Execute o arquivo create_api.py, isso ativará o flask.
 
-15. Faça uma consulta teste da API com a ferramenta que quiser, sugiro utilizar o postman, exemplo de endpoint:
+14. Faça uma consulta teste da API com a ferramenta que quiser, sugiro utilizar o postman, exemplo de endpoint:
 
 ~~~bash
 http://localhost:5000/search?keyword=Tecnologia
