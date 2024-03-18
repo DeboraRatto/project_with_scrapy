@@ -64,7 +64,7 @@ poetry shell
 poetry install
 ~~~
 
-5. Entre na pasta Pipeline/extract/g1news e execute:
+5. Entre na pasta Pipeline/extract e execute:
 
 ~~~bash
 scrapy crawl g1news -o g1news.json
